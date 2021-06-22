@@ -6,7 +6,7 @@ var User = new Schema({
 	Prenom:String,
 	Email:String,
 	Num:Number,
-	Poste:Number,
+	Poste:String,
 	CV:String,
 	Message:String
 },	{

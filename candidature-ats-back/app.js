@@ -3,10 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var config = require('./database/mongodb');
 var app = express();
 
 // view engine setup
@@ -18,7 +18,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// mongo config
+mongoose.connect(config.mongo.uri, 
+	{ useNewUrlParser: true,
+    useCreateIndex: true, 
+    useUnifiedTopology: true,
+    useFindAndModify: true
+  },
+	()=> console.log("Connected to DB!!!"));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

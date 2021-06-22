@@ -19,7 +19,7 @@ userController.create = async (req, res, next) => {
 /** get all candidats*/
 userController.get = async (req, res, next) => {
   User.find()
-.then(user => {res.status(200).json(group);console.log(user)})
+.then(user => {res.status(200).json(user);console.log(user)})
 .catch(error => {res.status(400).json({ error });console.log(error)});
 };
 /** end get candidat*/
@@ -33,7 +33,7 @@ userController.showprofile= async(req, res, next) => {
  
   
   User.findOne({ _id: req.params.user_id })
-    .then(group => {res.status(200).json(user);console.log(user)})
+    .then(user => {res.status(200).json(user);console.log(user)})
     .catch(error => {res.status(400).json({ error });console.log(error)});
     };
 /*end_profile_candidat*/ 
@@ -45,4 +45,4 @@ userController.showprofile= async(req, res, next) => {
 
 
 
-  module.exports = groupController;
+  module.exports = userController;
